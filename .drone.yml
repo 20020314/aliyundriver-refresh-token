@@ -29,7 +29,7 @@ steps:
   - name: cache
     path: /vue/aliyundriver-refresh-token
   settings:
-    source: /vue/aliyundriver-refresh-token/dist/
+    source: /vue/aliyundriver-refresh-token/dist/**/*
     target: .
     bucket: pe5i8m-html
     environment:
