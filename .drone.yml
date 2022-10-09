@@ -14,7 +14,6 @@ steps:
   - apk add git bash
   - cd /vue
   - git clone https://github.com/20020314/aliyundriver-refresh-token.git
-
 - name: 安装依赖
   image: node:16.15.0
   volumes:
@@ -24,8 +23,22 @@ steps:
   - cd /vue/aliyundriver-refresh-token
   - npm install vite
   - npx vite build
-
-
+- name: 上传项目文件
+  image: plugins/s3
+  volumes:
+  - name: cache
+    path: /vue/aliyundriver-refresh-token
+  settings:
+    source: /vue/aliyundriver-refresh-token/**/*
+    target: /vue/
+    bucket: pe5i8m-public
+    environment:
+    endpoint:
+      from_secret: MINIO_HOST
+    access_key:
+      from_secret: MINIO_ID
+    secret_key:
+      from_secret: MINIO_KEY
 
 volumes:
 - name: cache
