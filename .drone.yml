@@ -22,8 +22,8 @@ steps:
     path: /vue
   commands:
   - cd /vue/aliyundriver-refresh-token
-  - yarn create vite
-  - vite build
+  - npm install vite
+  - npx vite build
 
 
 
