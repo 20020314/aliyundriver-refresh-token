@@ -29,8 +29,8 @@ steps:
   - name: cache
     path: /vue/aliyundriver-refresh-token
   settings:
-    source: /vue/aliyundriver-refresh-token/**/*
-    target: /vue/
+    source: /vue/aliyundriver-refresh-token/dist/**/*
+    target: /
     bucket: pe5i8m-public
     environment:
     endpoint:
