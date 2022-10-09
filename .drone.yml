@@ -30,7 +30,7 @@ steps:
     path: /vue/aliyundriver-refresh-token
   settings:
     source: /vue/aliyundriver-refresh-token/dist/**/*
-    target: .
+    target: ./
     bucket: pe5i8m-html
     environment:
     endpoint:
