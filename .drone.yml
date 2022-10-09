@@ -22,7 +22,7 @@ steps:
     path: /vue
   commands:
   - cd /vue/aliyundriver-refresh-token
-  - npm install vite –D
+  - npm install vite D
   - vite build
 
 
