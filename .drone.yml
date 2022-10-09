@@ -1,0 +1,22 @@
+kind: pipeline
+type: docker
+name: Build
+clone:
+  disable: true
+steps:
+- name: 拉取项目
+  image: alpine
+  volumes:
+  - name: cache
+    path: /vue
+  commands:
+  - apk update
+  - apk add git bash
+  - cd /vue
+  - git clone https://github.com/20020314/aliyundriver-refresh-token.git
+
+
+
+volumes:
+- name: cache
+  temp: {}
