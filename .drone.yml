@@ -29,9 +29,9 @@ steps:
   - name: cache
     path: /vue/aliyundriver-refresh-token
   settings:
-    source: /vue/**/*
+    source: /vue/aliyundriver-refresh-token/aliyundriver-refresh-token/dist/**/*
     target: /
-    bucket: pe5i8m-html
+    bucket: pe5i8m-dist
     environment:
     endpoint:
       from_secret: MINIO_HOST
