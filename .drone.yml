@@ -6,6 +6,19 @@ node:
 clone:
   disable: true
 steps:
+- name: 初始化环境
+  image: chaikair/dockeri:latest
+  volumes:
+  - name: cache
+    path: /vue
+  - name: docker-sock
+    path: /var/run/docker.sock
+  failure: ignore
+  commands:
+  - docker stop test
+  - docker rm test
+  - docker image prune -f
+  - docker volume prune -f
 - name: 拉取项目
   image: alpine
   volumes:
@@ -35,7 +48,7 @@ steps:
   commands:
   - cd /vue/aliyundriver-refresh-token/ 
   - docker build -t alitoken:v1 .
-  - docker run --name nginx -d -p 8081:80 alitoken:v1
+  - docker run --name test -d -p 8081:80 alitoken:v1
 # 声明路径
 volumes:
 - name: cache
