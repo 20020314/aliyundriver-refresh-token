@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: Build
+name: 阿里云Tonken
 clone:
   disable: true
 steps:
@@ -23,23 +23,21 @@ steps:
   - cd /vue/aliyundriver-refresh-token
   - npm install vite
   - npx vite build
-- name: 上传项目文件
-  image: plugins/s3
+- name: 运行
+  image: chaikair/dockeri
   volumes:
   - name: cache
-    path: /vue/aliyundriver-refresh-token
-  settings:
-    source: /vue/aliyundriver-refresh-token/aliyundriver-refresh-token/dist/**/*
-    target: /
-    bucket: pe5i8m-dist
-    environment:
-    endpoint:
-      from_secret: MINIO_HOST
-    access_key:
-      from_secret: MINIO_ID
-    secret_key:
-      from_secret: MINIO_KEY
-
+    path: /vue/
+  - name: docker-sock
+    path: /var/run/docker.sock
+  commands:
+  - cd /vue/aliyundriver-refresh-token/ 
+  - docker build -t alitoken:v1 .
+  - docker run --name nginx -d -p 8081:80 alitoken:v1
+# 声明路径
 volumes:
 - name: cache
   temp: {}
+- name: docker-sock
+  host:
+  path: /var/run/docker.sock
