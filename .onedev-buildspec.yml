@@ -62,3 +62,21 @@ jobs:
   cpuRequirement: 250
   memoryRequirement: 256
   timeout: 3600
+- name: 停止
+  steps:
+  - !CommandStep
+    name: Stop
+    runInContainer: true
+    image: chaikair/dockeri:latest
+    interpreter: !DefaultInterpreter
+      commands:
+      - docker stop test
+      - docker rm test
+    useTTY: true
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  cpuRequirement: 250
+  memoryRequirement: 256
+  timeout: 3600
