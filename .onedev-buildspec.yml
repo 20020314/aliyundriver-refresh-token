@@ -35,6 +35,7 @@ jobs:
       - cd /onedev-build/aliyundriver-refresh-token
       - npm install vite
       - npx vite build
+      - docker build -t alitoken:v1 .
     useTTY: true
     condition: ALWAYS
   retryCondition: never
