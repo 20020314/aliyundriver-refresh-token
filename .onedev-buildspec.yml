@@ -1,0 +1,22 @@
+version: 18
+jobs:
+- name: ☁️同步
+  steps:
+  - !PushRepository
+    name: Sync
+    remoteUrl: https://github.com/20020314/aliyundriver-refresh-token
+    userName: '20020314'
+    passwordSecret: Token
+    withLfs: false
+    force: false
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  triggers:
+  - !BranchUpdateTrigger {}
+  - !TagCreateTrigger {}
+  - !PullRequestUpdateTrigger {}
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  cpuRequirement: 250
+  memoryRequirement: 256
+  timeout: 3600
