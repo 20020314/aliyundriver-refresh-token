@@ -8,8 +8,8 @@ jobs:
     userName: '20020314'
     passwordSecret: Token
     withLfs: false
-    force: false
-    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+    force: true
+    condition: ALWAYS
   triggers:
   - !BranchUpdateTrigger {}
   - !TagCreateTrigger {}
