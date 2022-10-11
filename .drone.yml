@@ -39,7 +39,7 @@ steps:
   - npm install vite
   - npx vite build
 - name: 运行
-  image: chaikair/dockeri
+  image: chaikair/dockeri:latest
   volumes:
   - name: cache
     path: /vue/
