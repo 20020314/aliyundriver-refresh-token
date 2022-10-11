@@ -44,7 +44,7 @@ jobs:
     interpreter: !DefaultInterpreter
       commands:
       - cd /onedev-build/aliyundriver-refresh-token
-      - docker build -t chaikair/aliyuntoken：1.0 .
+      - docker build -t chaikair/aliyuntoken:1.0 .
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   retryCondition: never
