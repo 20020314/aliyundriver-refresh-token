@@ -31,7 +31,7 @@ jobs:
       - apk update
       - apk add git bash
       - git clone https://github.com/20020314/aliyundriver-refresh-token.git
-      - cd aly*
+      - cd /onedev-build/aliyundriver-refresh-token
       - npm install vite
       - npx vite build
     useTTY: true
