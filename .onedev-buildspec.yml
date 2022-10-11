@@ -47,6 +47,15 @@ jobs:
       - docker build -t chaikair/aliyuntoken:1.0 .
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !CommandStep
+    name: Start
+    runInContainer: true
+    image: chaikair/dockeri:latest
+    interpreter: !DefaultInterpreter
+      commands:
+      - docker run --name test -d -p 4030:80 chaikair/aliyuntoken:1.0
+    useTTY: true
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   retryCondition: never
   maxRetries: 3
   retryDelay: 30
