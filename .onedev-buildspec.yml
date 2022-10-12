@@ -40,20 +40,11 @@ jobs:
   - !CommandStep
     name: docker
     runInContainer: true
-    image: chaikair/dockeri:latest
+    image: node:16.17.1-alpine
     interpreter: !DefaultInterpreter
       commands:
       - cd /onedev-build/aliyundriver-refresh-token
-      - docker build -t chaikair/aliyuntoken:1.0 .
-    useTTY: true
-    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
-  - !CommandStep
-    name: Start
-    runInContainer: true
-    image: chaikair/dockeri:latest
-    interpreter: !DefaultInterpreter
-      commands:
-      - docker run --name test -d -p 4030:80 chaikair/aliyuntoken:1.0
+      - npm run dev
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   retryCondition: never
