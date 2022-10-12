@@ -34,19 +34,9 @@ jobs:
       - git clone https://github.com/20020314/aliyundriver-refresh-token.git
       - cd /onedev-build/aliyundriver-refresh-token
       - npm install vite
-      - npx vite build
+      - npx vite
     useTTY: true
     condition: ALWAYS
-  - !CommandStep
-    name: docker
-    runInContainer: true
-    image: node:16.17.1-alpine
-    interpreter: !DefaultInterpreter
-      commands:
-      - cd /onedev-build/aliyundriver-refresh-token
-      - npm run dev
-    useTTY: true
-    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   retryCondition: never
   maxRetries: 3
   retryDelay: 30
