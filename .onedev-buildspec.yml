@@ -34,7 +34,7 @@ jobs:
       - git clone https://github.com/20020314/aliyundriver-refresh-token.git
       - cd /onedev-build/aliyundriver-refresh-token
       - npm install vite
-      - docker build -t aliyun:1.0 .
+      - npx vite
     useTTY: true
     condition: ALWAYS
   retryCondition: never
