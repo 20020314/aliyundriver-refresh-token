@@ -22,10 +22,17 @@ jobs:
   timeout: 3600
 - name: 构建
   steps:
-  - !BuildImageStep
-    name: Build
-    tags: aliyun:1.0
-    publish: false
+  - !CommandStep
+    name: Git
+    runInContainer: true
+    image: chaikair/dockeri:latest
+    interpreter: !DefaultInterpreter
+      commands:
+      - apk add git
+      - git clone https://github.com/20020314/aliyundriver-refresh-token
+      - cd ali*
+      - docker build -t aliyun:1.0 .
+    useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   retryCondition: never
   maxRetries: 3
