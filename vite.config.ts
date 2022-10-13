@@ -6,7 +6,7 @@ export default defineConfig({
     port: 8000,
     proxy: {
       "/api": {
-        target: "https://token.elysia.li/",
+        target: "https://127.0.0.1/",
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
